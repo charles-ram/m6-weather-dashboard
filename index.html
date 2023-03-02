@@ -15,7 +15,7 @@
 
 <body class="body">
 	<header class="header">
-		<div class="h1-container justify-content-center translate-middle bg-dark d-flex">
+		<div class="h1-container d-flex justify-content-center translate-middle bg-dark">
 			<h1 class="h1 text-light">Weather Dashboard</h1>
 		</div>
 	</header>
@@ -35,12 +35,16 @@
 							</div>
 
 							<!-- Search label content (input/button) -->
-							<div class="col-sm-4 p-0">
-								<button type="text" id="search-input" name="search-input" class="search-input rounded">
-									<span class="glyphicon glyphicon-search"></span>
-								</button>
+							<div class="row m-0">
+								<div class="col-sm-8 p-0 my-auto">
+									<input type="text" name="search-input" id="search-input" class="search-input rounded">
+								</div>
+								<div class="col-sm-4 p-0">
+									<button type="submit" class="btn bg-primary rounded search-button">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+								</div>
 							</div>
-
 						</form>
 					</div>
 
