@@ -23,8 +23,15 @@ const previousSearchList = function(cityName) {
 	searchEntryContainerEl.append(searchEntryContainer);
 
 	if (previousSearches.length > 0) {
-		let savedSearches = localStorage.getItem("savedSearches");
-		savedSearches = JSON.parse(previousSearches;)
+		var savedSearches = localStorage.getItem("savedSearches");
+		savedSearches = JSON.parse(previousSearches);
 	}
-	
-}
+
+	// 
+	savedSearches.push(cityName);
+	localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
+
+	// Resets the search input
+	$("#search-input").val("");
+
+};
