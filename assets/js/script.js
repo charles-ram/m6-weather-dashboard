@@ -6,19 +6,19 @@ var previousSearches = [];
 const previousSearchList = function(cityName) {
 	$('.past-search:contains("' + cityName + '")').remove();
 
-	//
+	// Creates a entry variable with city name
 	let searchEntry = $("<p>");
 	searchEntry.addClass('past-search');
 	searchEntry.text(cityName);
 
-	//
+	// Creates a container for the entry
 	let searchEntryContainer = $("<div>");
 	searchEntryContainer.addClass('past-search-container');
 
-	//
+	// Appends the entry to the container
 	searchEntryContainer.append(searchEntry);
 
-	//
+	// Appends the entry container to the search history container
 	let searchEntryContainerEl = $("#search-history-container");
 	searchEntryContainerEl.append(searchEntryContainer);
 
@@ -27,7 +27,7 @@ const previousSearchList = function(cityName) {
 		savedSearches = JSON.parse(previousSearches);
 	}
 
-	// 
+	// Adds city name to the array of saved searches
 	savedSearches.push(cityName);
 	localStorage.setItem("savedSearches", JSON.stringify(savedSearches));
 
