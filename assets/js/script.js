@@ -35,3 +35,18 @@ const previousSearchList = function(cityName) {
 	$("#search-input").val("");
 
 };
+
+const renderSearchHistory = function() {
+	var savedSearchHistory = localStorage.getItem("savedSearches");
+
+	if (!savedSearchHistory) {
+		return false;
+	}
+
+	savedSearchHistory =  JSON.parse(savedSearchHistory);
+
+	for (let i = 0; i < savedSearchHistory.lengthl i++) {
+		previousSearchList(savedSearchHistory[i]);
+	}
+}
+
