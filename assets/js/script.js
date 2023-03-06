@@ -45,8 +45,31 @@ const renderSearchHistory = function() {
 
 	savedSearchHistory =  JSON.parse(savedSearchHistory);
 
-	for (let i = 0; i < savedSearchHistory.lengthl i++) {
+	for (let i = 0; i < savedSearchHistory.length; i++) {
 		previousSearchList(savedSearchHistory[i]);
 	}
 }
 
+const currentWeatherSection = function(cityName) {
+	fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
+		.then(function(response) {
+			return response.json();
+		})
+		.then(function(response) {
+			var cityLongitude = response.coord.lon;
+			var cityLatitude = response.coord.lat;
+
+			fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&exclude=minutely,hourly,alerts&units=imperial&appid=${apiKey}`)
+				.then(function(response) {
+					return response.json();
+				})
+				.then(function(response) {
+					renderSearchHistory(cityName);
+
+					var currentWeatherContainer = $('current-weather-container');
+					currentWeatherContainer.addClass('current-weather-container');
+
+					var currentTitle = $('#current-title');
+				})
+		})
+}
