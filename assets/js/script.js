@@ -149,3 +149,27 @@ const fiveDayForecastSection = function(cityName) {
 		});
 };
 
+$('#search-form').on('submit', function() {
+	event.preventDefault();
+
+	var cityName = $('#search-input').val();
+
+	if (cityName === "" || cityName == null) {
+		alert("Please enter a city.");
+		event.preventDefault();
+	} else {
+		currentWeatherSection(cityName);
+		fiveDayForecastSection(cityName);
+	}
+});
+
+$('#search-history-container').on('click', "p", function() {
+	var previousCityName = $(this).text();
+	currentWeatherSection(previousCityName);
+	fiveDayForecastSection(previousCityName);
+
+	var previousCityClicked = $(this);
+	previousCityClicked.remove();
+});
+
+renderSearchHistory();
